@@ -1,0 +1,12 @@
+//Shiv Subedi
+//This snippet of code shows how you save, run and compile a script.
+
+1. Write a script
+2. Save the script in .sh file
+
+3. For running the script, follow two steps:
+  a. -> chmod +x <scriptname>
+  b. -> ./<scriptname>
+
+
+Note: # -> used for commenting in the script
