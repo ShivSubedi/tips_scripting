@@ -1,0 +1,17 @@
+//Shiv Subedi
+//This section of code shows how being in a local direcotry, you can:
+1.  go to a different directory
+2.  select the data and transfer it to a different file
+3. transfer the new file to desired location
+
+#!/bin/sh
+A=50
+P=1
+//1. enter the directory with the information you need
+#cd /home/subedi/dir_$A/
+
+//2. Select the data of interest, here from data file 'profile1.data' from rows a->b, from columns p,q,r; data moved to file '50.data'
+awk 'NR==a,NR==b{print $p,$q,$r}' profile$P.data > $A.data
+
+//3. New file '50.data' now moved to a new directory 'new_data'
+#mv $A.data /home/subedi/new_data/
