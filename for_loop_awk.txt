@@ -1,0 +1,13 @@
+//Shiv Subedi
+//This section of code shows:
+//1. how to use for loop in scripting
+//2. how to use awk command while adding data in single file from multiple data files
+
+#!/bin/sh
+for (( j = 1; j <=n; j++ )) //#n-> total number of profile.data files
+
+ do
+   #awk command below selects the 'a'th row and prints the value of 'b'th column from 'n' profile.data files
+   #double ">" adds in each new entry in the data file specified.
+ awk 'NR==a{print $b}'  profile$j.data >> new_file.data
+done
