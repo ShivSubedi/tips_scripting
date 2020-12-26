@@ -1,0 +1,16 @@
+//Shiv Subedi
+//This snippet of code shows:
+//1. How to use while loop in scripting
+//2. How to use awk command in while loop
+
+#!/bin/sh
+X=1
+Y=n
+while [ $X -lt $Y ]
+do
+  //here the information of our interest lie from rows a -> b, and in the columns p, q, r of datafiles 'profileX.data'
+  //awk command selects the above information from the data files and saves it in new data files 'new_profileX.data'
+  //single ">" replaces the previous data everytime net data is read and written
+awk 'NR==a,NR==b{print $p,$q,$r}'  profile$X.data > new_profile$X.data
+(( X+=1 ))
+done
