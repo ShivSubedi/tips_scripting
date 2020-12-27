@@ -1,0 +1,15 @@
+//Shiv Subedi
+//This snippet of code shows how to:
+//1. un tar multiple files in a loop  and
+//2. move the untarred files in a different name 
+
+#!/bin/sh
+X=1
+Y=10
+while [ $X -lt $Y ]
+do
+    cd /home/..../untar_files/  #goes to the folder saved for untarred files
+    tar -xvf $X.tar       #untars the files X.tar to folder name LOGS (LOGS was the original name of folder)
+    mv LOGS LOGS_$X           #each tarred folder X.tar was originally named 'LOGS', so while untarring it is moved to a different name
+(( X+=1 ))
+done
