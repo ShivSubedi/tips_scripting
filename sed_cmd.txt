@@ -1,0 +1,40 @@
+//Shiv Subedi
+//This snippet of code shows how to find and replace text from multiple files at once using 'sed' command.
+//syntax: sed  's/old-text/new-text/g' input.txt
+//syntax: sed  'l s/old-text/new-text/g' input.txt
+//s-> substitute command of sed for find and replace
+//'/g' is global replace, and tells to find all occurence of 'old-text' and replaces them to 'new-text'
+// '/g' can be replaced with for example '/1', '/2', which will now look for first occurence and second occurence as above
+//if nothing mentioned at the end, only first occurence is replaced (equivalent to '/1')
+//in the second syntax, 'l' represents the line in input.txt file where you want the replacement
+
+//Here, in the example shown, there are multiple changes to be made in the original file 'my_file'
+//Thus, I create intermediate files (inter1, inter2, inter3, inter4) which each change until the final change is made
+//Once the final change is made, I will remove all the intermediate files inter1, inter2, inter3 and original file i.e. 'my_file'
+//final file with all the changes made will then be moved to 'my_file_final'
+
+#!/bin/sh
+X=1
+Y=10
+while [ $X -lt $Y ]
+do
+
+cd /user/.../$X          #go to the folder which contains file to make change
+
+
+sed 'l1 s/old_text1/new_text1/' my_file > inter1    #make change in file 'my_file' and save it to 'inter1'
+
+sed 'l2 s/old_text2/new_text2/' inter1 > inter2     #make change in file 'inter1' and save it to 'inter2'
+
+sed 'l3 s/old_text3/new_text3/' inter2 > inter3     #make change in file 'inter2' and save it to 'inter3'
+
+sed 'l4 s/old_text4/new_text4/' inter3 > inter4    #make change in file 'inter3' and save it to 'inter4'
+
+rm -f inter1
+rm -f inter2
+rm -f inter3
+rm -f my_file
+mv inter4 my_file_final
+
+(( X+=1 ))
+done
