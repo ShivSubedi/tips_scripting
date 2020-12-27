@@ -1,0 +1,15 @@
+//Shiv Subedi
+//This snippet of code shows how to:
+//1. tar multiple files in a loop remotely and
+//2. move the tar files in a different location
+
+#!/bin/sh
+X=1
+Y=10
+while [ $X -lt $Y ]
+do
+cd /users/.../$X               #move to the folder X, which changes in loop from 1-10
+tar -cvf $X.tar LOGS             #each folder X contains directory 'LOGS', which gets 'tar' into folder 'X.tar' in loop
+mv $X.tar /users/.../tar_files     #each tar files are then moved to a different folder 'tar_files'
+(( X+=1 ))
+done
